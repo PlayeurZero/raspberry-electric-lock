@@ -1,0 +1,12 @@
+{
+  "name": "electrical-lock",
+  "version": "1.0.0-alpha.0",
+  "main": "app.mjs",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "rpio": "^2.4.2"
+  }
+}

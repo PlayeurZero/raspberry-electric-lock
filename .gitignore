@@ -1,0 +1,11 @@
+# System files
+*.swp
+
+# NPM modules
+node_modules/
+
+# Log files
+logs/
+
+# Environment variables
+.env

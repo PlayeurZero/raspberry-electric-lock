@@ -4,18 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contrôle Gâche Électrique</title>
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" href="/icons/rel-96x96.png" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center h-screen">
+  <body
+    class="bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center h-screen"
+  >
     <div class="bg-white p-8 rounded-xl shadow-lg text-center">
       <h1 class="text-3xl font-bold text-gray-700 mb-6">
         🔒 Contrôle de la Gâche Électrique
       </h1>
 
-      <button id="openButton"
-        class="bg-green-500 text-white px-8 py-4 text-xl font-semibold rounded-full shadow-lg hover:bg-green-600 transition transform hover:scale-105">
+      <button
+        id="openButton"
+        class="bg-green-500 text-white px-8 py-4 text-xl font-semibold rounded-full shadow-lg hover:bg-green-600 transition transform hover:scale-105"
+      >
         🔓 Ouvrir la Gâche
       </button>
     </div>
@@ -29,7 +34,7 @@
 
           try {
             await fetch("/api/unlock");
-          } catch (e) { }
+          } catch (e) {}
 
           setTimeout(() => {
             statusText.innerText = "🔓 Ouvrir la Gâche";
@@ -38,8 +43,11 @@
     </script>
 
     <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .then(console.log)
+          .catch(console.error);
       }
     </script>
   </body>

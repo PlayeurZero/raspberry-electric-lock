@@ -68,15 +68,27 @@ const raspberry = new (class {
 
   runHttpServer() {
     const server = http.createServer(async function (req, res) {
-      if ("/" === req.url) {
-        createReadStream("./app.html").pipe(res);
-      } else if ("/unlock" === req.url) {
-        await raspberry.openRelay("http");
+      if (req.url.includes("..")) {
+        res.writeHead(400)
+        res.end()
+      }
+
+      if ("/api/unlock" === req.url) {
+        raspberry.openRelay("http")
         res.writeHead(204);
         res.end();
       } else {
-        res.writeHead(404);
-        res.end();
+        let filepath = path.resolve("public", "/" === req.url
+          ? "index.html"
+          : req.url)
+
+        try {
+          await fs.stat(path.resolve(filepath))
+          createReadStream(filepath).pipe(res)
+        } catch {
+          res.writeHead(404)
+          res.end()
+        }
       }
     });
 

@@ -56,5 +56,13 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000"
+  "theme_color": "#000000",
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot1.png",
+      "type": "image/jpg",
+      "sizes": "1080x1920",
+      "form_factor": "narrow"
+    }
+  ]
 }

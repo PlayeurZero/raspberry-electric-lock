@@ -72,8 +72,8 @@ const raspberry = new (class {
   runHttpServer() {
     const httpsServer = https.createServer(
       {
-        key: readFileSync("certs/server-key.pem"),
-        cert: readFileSync("certs/server-cert.pem"),
+        key: readFileSync(process.env.HTTPS_KEY_FILEPATH),
+        cert: readFileSync(process.env.HTTPS_CERT_FILEPATH),
       },
       async function (req, res) {
         if (req.url.includes("..")) {

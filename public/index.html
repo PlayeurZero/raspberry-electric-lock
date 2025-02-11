@@ -7,6 +7,21 @@
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" type="image/png" href="/icons/rel-96x96.png" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // This variable will save the event for later use.
+      let deferredPrompt;
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const $installBtn = document.querySelector("#install");
+        $installBtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          deferredPrompt.prompt();
+        });
+      });
+    </script>
   </head>
 
   <body
@@ -23,6 +38,7 @@
       >
         🔓 Ouvrir la Gâche
       </button>
+      <button id="install">Installer</button>
     </div>
 
     <script>
